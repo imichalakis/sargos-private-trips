@@ -1,6 +1,6 @@
-import { boats } from "@/data/boats";
 import BoatTripPanel from "@/components/BoatTripPanel";
 import { notFound } from "next/navigation";
+import { getBoatBySlug } from "@/lib/boatsRepo";
 
 type BoatPageProps = {
   params: {
@@ -8,10 +8,22 @@ type BoatPageProps = {
   };
 };
 
-export default function BoatDetailPage({ params }: BoatPageProps) {
-  const boat = boats.find((b) => b.slug === params.slug);
-
-  if (!boat) return notFound();
-
-  return <BoatTripPanel boat={boat} />;
+export default async function BoatDetailPage({
+  params,
+}: BoatPageProps) {
+  const boat = await getBoatBySlug(params.slug);
+  if (!boat || !boat.isActive) return notFound();
+  return (
+    <BoatTripPanel
+      boat={{
+        slug: boat.slug,
+        name: boat.name,
+        description: boat.description,
+        price: `${boat.pricePerDay}`,
+        image: boat.image,
+        capacity: boat.capacity,
+        features: boat.features,
+      }}
+    />
+  );
 }

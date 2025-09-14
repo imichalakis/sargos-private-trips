@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "name": "Sunset Cruiser",
+    "slug": "sunset-cruiser",
+    "description": "Enjoy evening cruises.",
+    "capacity": 6,
+    "pricePerDay": 400,
+    "features": ["Sun deck", "Sound system"],
+    "image": "/vercel.svg",
+    "isActive": true
+  },
+  {
+    "id": "2",
+    "name": "Harbor Explorer",
+    "slug": "harbor-explorer",
+    "description": "Perfect for harbor tours.",
+    "capacity": 4,
+    "pricePerDay": 300,
+    "features": ["GPS"],
+    "image": "/vercel.svg",
+    "isActive": true
+  }
+]
